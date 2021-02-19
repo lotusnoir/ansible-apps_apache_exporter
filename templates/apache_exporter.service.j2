@@ -1,0 +1,20 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Prometheus apache Exporter
+After=network-online.target
+StartLimitInterval=0
+
+[Service]
+Type=simple
+Restart=always
+ExecStart={{ apache_exporter_install_dir }}/apache_exporter \
+          --telemetry.address=":9117" \
+          --scrape_uri="http://localhost/server-status?auto"
+ExecReload=/bin/kill -HUP $MAINPID
+SyslogIdentifier=apache_exporter
+RestartSec=1
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
