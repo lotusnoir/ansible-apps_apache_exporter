@@ -45,6 +45,14 @@ You need to be able to acces the web status page http://localhost/server-status
 	    https_proxy: "{{ https_proxy }}"
 	    no_proxy: "{{ no_proxy }}
 
+## Prometheus rules
+
+TODO
+
+## Grafana dashboard
+
+A sample dashboard is available here: [https://grafana.com/grafana/dashboards/13923](https://grafana.com/grafana/dashboards/13923)
+
 ## License
 
 This project is licensed under Apache License. See [LICENSE](/LICENSE) for more details.
