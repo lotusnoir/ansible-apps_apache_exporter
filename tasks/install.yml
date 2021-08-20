@@ -1,0 +1,58 @@
+---
+- name: "Check for apache_exporter binary"
+  stat:
+    path: '{{ apache_exporter_install_dir }}/apache_exporter'
+  changed_when: false
+  register: apache_exporter_install
+
+- when: not apache_exporter_install.stat.exists or apache_exporter_force_install
+  block:
+    - name: "Download apache_exporter..."
+      get_url:
+        url: '{{ apache_exporter_tgz_url }}'
+        dest: '{{ apache_exporter_temp_dir }}/{{ apache_exporter_tgz }}'
+        timeout: '60'
+        mode: '0644'
+
+    - name: "Ensure install dir exists"
+      file:
+        path: '{{ item }}'
+        state: directory
+        mode: '0755'
+      with_items:
+        - '{{ apache_exporter_install_dir }}'
+        - '{{ apache_exporter_temp_dir }}/apache_exporter'
+
+    - name: "Unarchive apache_exporter..."
+      unarchive:
+        src: '{{ apache_exporter_temp_dir }}/{{ apache_exporter_tgz }}'
+        dest: '{{ apache_exporter_temp_dir }}/apache_exporter'
+        extra_opts: [--strip-components=1]
+        remote_src: true
+        mode: '0644'
+
+    - name: "Copy apache_exporter binary..."
+      copy:
+        src: '{{ apache_exporter_temp_dir }}/apache_exporter/apache_exporter'
+        dest: '{{ apache_exporter_install_dir }}/apache_exporter'
+        remote_src: true
+        mode: '0755'
+
+    - name: "Remove temporary directory"
+      file:
+        path: '{{ apache_exporter_temp_dir }}/apache_exporter'
+        state: absent
+
+- name: "Create systemd for apache_exporter"
+  template:
+    src: 'apache_exporter.service.j2'
+    dest: '/etc/systemd/system/apache_exporter.service'
+    mode: '0640'
+  notify: "restart apache_exporter"
+
+- name: Start apache_exporter.service
+  service:
+    name: apache_exporter
+    state: started
+    enabled: true
+    daemon_reload: true
