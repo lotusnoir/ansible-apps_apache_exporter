@@ -1,6 +1,6 @@
 ---
 # Binary install
-apache_exporter_version: "0.8.0"
+apache_exporter_version: "0.10.1"
 apache_exporter_tgz: "apache_exporter-{{ apache_exporter_version }}.linux-386.tar.gz"
 apache_exporter_tgz_url: "https://github.com/Lusitaniae/apache_exporter/releases/download/v{{ apache_exporter_version }}/{{ apache_exporter_tgz }}"
 apache_exporter_temp_dir: "/tmp"
