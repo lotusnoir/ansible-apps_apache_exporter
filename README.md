@@ -5,8 +5,8 @@
 [![Galaxy Role](https://img.shields.io/badge/galaxy-apps_apache_exporter-purple?style=flat)](https://galaxy.ansible.com/lotusnoir/apps_apache_exporter)
 [![Version](https://img.shields.io/github/release/lotusnoir/ansible-apps_apache_exporter.svg)](https://github.com/lotusnoir/ansible-apps_apache_exporter/releases/latest)
 ![GitHub repo size](https://img.shields.io/github/repo-size/lotusnoir/ansible-apps_apache_exporter?color=orange&style=flat)
-[![downloads](https://img.shields.io/ansible/role/d/52300)](https://galaxy.ansible.com/lotusnoir/apps_apache_exporter)
-![Ansible Quality Score](https://img.shields.io/ansible/quality/52300)
+[![downloads](https://img.shields.io/ansible/role/d/53226)](https://galaxy.ansible.com/lotusnoir/apps_apache_exporter)
+![Ansible Quality Score](https://img.shields.io/ansible/quality/53226)
 [![License](https://img.shields.io/badge/license-Apache--2.0-brightgreen?style=flat)](https://opensource.org/licenses/Apache-2.0)
 
 Deploy [apache_exporter](https://github.com/Lusitaniae/apache_exporter/) to expose apache metrics to prometheus.
