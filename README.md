@@ -11,43 +11,29 @@
 
 Deploy [apache_exporter](https://github.com/Lusitaniae/apache_exporter/) to expose apache metrics to prometheus.
 
-## Requierements
+## Requirements
 
 You need to activate the status page on apache: http://localhost/server-status
 
-
 ## Role variables
 
-| Name                            | Default Value  | Description                        |
-| ------------------------------- | -------------- | -----------------------------------|
-| `apache_exporter_version`       | 0.10.1          | apache_exporter version |
-| `apache_exporter_temp_dir`      | /tmp           | temporary directory to uncompress package |
-| `apache_exporter_install_dir`   | /usr/local/bin | directory to install binary |
-| `apache_exporter_force_install` | false          | force install variable |
-| `apache_exporter_port`          | 9117           | port to expose prometheus metrics |
+See [variables](/defaults/main.yml) for more details.
 
 ## Examples
 
-	---
-	- hosts: apps_apache_exporter
-	  become: yes
-	  become_method: sudo
-	  gather_facts: yes
-	  roles:
-	    - role: ansible-apps_apache_exporter
-	  environment: 
-	    http_proxy: "{{ http_proxy }}"
-	    https_proxy: "{{ https_proxy }}"
-	    no_proxy: "{{ no_proxy }}
+        ---
+        - hosts: apps_apache_exporter
+          become: true
+          become_method: sudo
+          gather_facts: true
+          roles:
+            - role: ansible-apps_apache_exporter
 
-## Prometheus rules
+## Grafana Dashboard
 
-TODO
-
-## Grafana dashboard
-
-A sample dashboard is available here: [https://grafana.com/grafana/dashboards/13923](https://grafana.com/grafana/dashboards/13923)
+You can find a grafana dashboard [here](https://grafana.com/grafana/dashboards/13923)
 
 ## License
 
 This project is licensed under Apache License. See [LICENSE](/LICENSE) for more details.
+
