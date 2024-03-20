@@ -54,7 +54,7 @@
     src: 'apache_exporter.service.j2'
     dest: '/etc/systemd/system/apache_exporter.service'
     mode: '0640'
-  notify: "restart apache_exporter"
+  notify: "Restart apache_exporter"
 
 - name: "Start apache_exporter.service"
   ansible.builtin.service:

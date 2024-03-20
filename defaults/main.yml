@@ -8,4 +8,4 @@ apache_exporter_install_dir: "/usr/local/bin"
 apache_exporter_force_install: false
 
 # Systemd options
-apache_exporter_port: "9117"
+#apache_exporter_port: "9117"

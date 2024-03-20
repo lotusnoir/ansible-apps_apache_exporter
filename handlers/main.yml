@@ -1,5 +1,5 @@
 ---
-- name: "restart apache_exporter"
+- name: "Restart apache_exporter"
   ansible.builtin.service:
     name: "apache_exporter"
     state: "restarted"
