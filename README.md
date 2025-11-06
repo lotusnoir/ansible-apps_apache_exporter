@@ -22,10 +22,13 @@
 ## Description
 
 Deploy [apache_exporter](https://github.com/Lusitaniae/apache_exporter/) to expose apache metrics to prometheus.
-## Requirements
 
 "You need to activate the status page on apache: http://localhost/server-status"
 
+
+## Requirements
+
+none
 
 ## Role variables
 
